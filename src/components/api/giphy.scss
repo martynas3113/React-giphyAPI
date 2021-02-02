@@ -56,7 +56,7 @@
     visibility: hidden;
     padding: 7px;
     background-color: red;
-    transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease
 
 
   }
@@ -99,24 +99,18 @@
   
 
   @media (max-width: 990px){
-    .gifs{
-      grid-template-columns: repeat(3, minmax(200px, 1fr));
+    .wrapper{
+      grid-template-columns: repeat(2, minmax(200px, 1fr));
     }
   }
 
   @media(max-width:770px){
-    .gifs{
-      grid-template-columns: repeat(2, minmax(200px, 1fr));
+    .wrapper{
+      grid-template-columns: repeat(1, minmax(200px, 1fr));
     }
 
     .form-control {
       width: 50%;
-    }
-  }
-
-  @media(max-width:480px){
-    .gifs{
-      grid-template-columns: repeat(1, minmax(200px, 1fr));
     }
   }
 

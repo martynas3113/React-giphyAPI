@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import './giphy.scss';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { Container } from 'react-bootstrap';
-import { AiOutlineClose } from'react-icons/ai';
+import { AiOutlineClose } from 'react-icons/ai';
 
 
 
@@ -60,7 +60,7 @@ const Giphy = () => {
         setShowPopup(!showPopup);
         console.log(popup);
         console.log(showPopup)
-        
+
     }
 
     const renderGifs = () => {
@@ -70,13 +70,12 @@ const Giphy = () => {
                     <Container key={idx} className="container gif">
                         <img onClick={showGif} alt={item.slug} src={item.images.downsized.url} />
                         <div className="show-gif">
-                            <img src={item.images.downsized.url}/>
+                            <img src={item.images.downsized.url} />
                         </div>
                     </Container>
                 )
             })}
         </InfiniteScroll>
-
     }
 
     const renderError = () => {
@@ -136,8 +135,6 @@ const Giphy = () => {
 
             }
         }
-        
-
     };
 
     return (
@@ -148,13 +145,13 @@ const Giphy = () => {
                 <button onClick={handleSubmit} type="submit" className="btn btn-primary">Go</button>
             </form>
             <div style={{ right: validated ? 0 : `${-20}%` }} className={validated ? "error active " : "error"}>Please input only characters and numbers</div>
-            <div style={{display: showPopup ? "flex" : "none" }} className="gif-show">
-                    <AiOutlineClose onClick={showGif} className="close"/>
-                    <img src={popup}/>
-                </div>
+            <div style={{ display: showPopup ? "flex" : "none" }} className="gif-show">
+                <AiOutlineClose onClick={showGif} className="close" />
+                <img src={popup} />
+            </div>
             <div className="container gifs">
                 {
-                renderGifs()
+                    renderGifs()
                 }
             </div>
         </div>
