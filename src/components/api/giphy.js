@@ -69,9 +69,6 @@ const Giphy = () => {
                 return (
                     <Container key={idx} className="container gif">
                         <img onClick={showGif} alt={item.slug} src={item.images.downsized.url} />
-                        <div className="show-gif">
-                            <img src={item.images.downsized.url} />
-                        </div>
                     </Container>
                 )
             })}
@@ -142,12 +139,12 @@ const Giphy = () => {
             {renderError()}
             <form onSubmit={onSubmit} className="input-form form-inline justify-content-center">
                 <input value={search} autoFocus required onChange={handleSearch} type="text" placeholder="Search for GIFS" className="form-control animate" />
-                <button onClick={handleSubmit} type="submit" className="btn btn-primary">Go</button>
+                <button data-testid="search-button" onClick={handleSubmit} type="submit" className="btn btn-primary">Go</button>
             </form>
             <div style={{ right: validated ? 0 : `${-20}%` }} className={validated ? "error active " : "error"}>Please input only characters and numbers</div>
             <div style={{ display: showPopup ? "flex" : "none" }} className="gif-show">
                 <AiOutlineClose onClick={showGif} className="close" />
-                <img src={popup} />
+                <img alt="Popup" src={popup} />
             </div>
             <div className="container gifs">
                 {
