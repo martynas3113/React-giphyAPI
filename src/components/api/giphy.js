@@ -3,6 +3,8 @@ import React, { useEffect, useState } from 'react';
 import './giphy.scss';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { Container } from 'react-bootstrap';
+import { AiOutlineClose } from'react-icons/ai';
+
 
 
 
@@ -13,6 +15,8 @@ const Giphy = () => {
     const [search, setSearch] = useState("");
     const [currentPage, setCurrentPage] = useState(0);
     const [validated, setValidated] = useState(true);
+    const [popup, setPopup] = useState("");
+    const [showPopup, setShowPopup] = useState(false);
 
     const fetchGif = () => {
         formValidation();
@@ -50,12 +54,24 @@ const Giphy = () => {
         fetchGif();
     }, []);
 
+    const showGif = (e) => {
+        const image = e.target.src;
+        setPopup(image);
+        setShowPopup(!showPopup);
+        console.log(popup);
+        console.log(showPopup)
+        
+    }
+
     const renderGifs = () => {
         return <InfiniteScroll className="wrapper" dataLength={data.length} next={() => fetchGif()} hasMore={true}>
             {data.map((item, idx) => {
                 return (
                     <Container key={idx} className="container gif">
-                        <img alt={item.slug} src={item.images.downsized.url} />
+                        <img onClick={showGif} alt={item.slug} src={item.images.downsized.url} />
+                        <div className="show-gif">
+                            <img src={item.images.downsized.url}/>
+                        </div>
                     </Container>
                 )
             })}
@@ -132,8 +148,14 @@ const Giphy = () => {
                 <button onClick={handleSubmit} type="submit" className="btn btn-primary">Go</button>
             </form>
             <div style={{ right: validated ? 0 : `${-20}%` }} className={validated ? "error active " : "error"}>Please input only characters and numbers</div>
+            <div style={{display: showPopup ? "flex" : "none" }} className="gif-show">
+                    <AiOutlineClose onClick={showGif} className="close"/>
+                    <img src={popup}/>
+                </div>
             <div className="container gifs">
-                {renderGifs()}
+                {
+                renderGifs()
+                }
             </div>
         </div>
     )
