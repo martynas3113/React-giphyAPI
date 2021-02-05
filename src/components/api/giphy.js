@@ -89,7 +89,7 @@ const Giphy = () => {
 
     const formValidation = () => {
         let isValid = false;
-        const nameValid = /[^A-Za-z0-9/s]+/g;
+        const nameValid = /[^A-Za-z0-9\s]+/g;
         if (nameValid.test(search)) {
             isValid = true;
             setValidated(true);
