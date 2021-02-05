@@ -58,8 +58,6 @@ const Giphy = () => {
         const image = e.target.src;
         setPopup(image);
         setShowPopup(!showPopup);
-        console.log(popup);
-        console.log(showPopup)
 
     }
 
