@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
 import Giphy from './giphy';
-//Cheking if input ant button renders correctly
+//Cheking if input and button renders correctly
 it('renders without crashing', () => {
     const {queryByTestId, queryByPlaceholderText} = render(<Giphy/>)
     
